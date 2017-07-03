@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="src/scss/default.css">
+</head>
+<body>
+<form id="form1">
+    <table border="0px" style="font-size:12px" width="730px">
+        <tr>
+            <td align="right">你的年龄:</td>
+            <td><input type="text" id="nl" name="nl" style="width:120px"  class="fv_input_text_default" /></td>
+            <td><div id="nlTip" style="width:280px"></div></td>
+        </tr>
+        <tr>
+            <td align="right">你的性别:</td>
+            <td><input type="radio" id="sex" value="1" name="xb_one" />
+                男&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" id="sex1" value="2" name="xb_one" />
+                女</td>
+            <td><div id="sexTip" style="width:280px"></div></td>
+        </tr>
+        <tr>
+            <td align="right">你的性别:</td>
+            <td><input type="checkbox" id="sex" value="1" name="xb_one" />
+                男&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="sex1" value="2" name="xb_one" />
+                女</td>
+            <td><div id="sexTip" style="width:280px"></div></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td align="right">你的学历:</td>
+            <td> <select name="xueli" id="xueli">
+                <option value="">－－请选择你的学历－－</option>
+                <option value="a">专科</option>
+                <option value="b">本科</option>
+                <option value="c">研究生</option>
+                <option value="e">硕士</option>
+                <option value="d">博士</option>
+            </select> </td>
+            <td><div id="xueliTip" style="width:280px"></div></td>
+        </tr>
+
+    </table>
+</form>
+
+<!--<script src="src/js/jquery-1.12.3.min.js"></script>-->
+<script src="jquery-2.1.4.min.js"></script>
+<script src="src/js/jquery.uniform.js"></script>
+<script src="formValidator-4.1.3.js"></script>
+<script src="formValidatorRegex.js"></script>
+<script src="DateTimeMask.js"></script>
+<script>
+    $(function() {
+        'use strict';
+        var $uniformed = $("input, textarea, select, button, a").uniform();
+        /*        var $uniformed = $("input, textarea, select, button, a").not(".skipThese");
+         $uniformed.uniform();*/
+    });
+</script>
+<script>
+    $(function(){
+
+        $.formValidator.initConfig({formID:"form1",theme:"ArrowSolidBox",submitOnce:true,
+            onError:function(msg,obj,errorlist){
+                $("#errorlist").empty();
+                $.map(errorlist,function(msg){
+                    $("#errorlist").append("<li>" + msg + "</li>")
+                });
+                alert(msg);
+            },
+            ajaxPrompt : '有数据正在异步验证，请稍等...'
+        });
+        $("#nl").formValidator({
+            autoModify:true,onShow:"请输入的年龄（1-99岁之间）",
+            onFocus:"只能输入1-99之间的数字哦",
+            onCorrect:"恭喜你,你输对了"
+        }).inputValidator({
+            min:1,
+            max:99,
+            type:"value",
+            onErrorMin:"你输入的值必须大于等于1",
+            onError:"年龄必须在1-99之间，请确认"
+        }).defaultPassed();
+
+    })
+</script>
+</body>
+</html>

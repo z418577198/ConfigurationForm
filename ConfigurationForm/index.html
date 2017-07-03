@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="pluge/valid/src/scss/default.css">
+</head>
+<body>
+<form id="myForm">
+    <div id="content"></div>
+</form>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/threeArea.js"></script>
+<script>
+    var data=null;
+    $.ajax({
+        url: './data/test.json',
+        async: false,
+        dataType: 'json',
+        success: function (result) {
+            data = result;
+        }
+    });
+
+    $.each(data, function (index, element) {
+        var Content=$("#content");
+        if (element.type == "text") {
+            Content.append("<input type='text' id='" + element.id + "' name='" + element.name + "' placeholder='请输入内容'>");
+        } else if (element.type == "select") {
+            var options = "";
+            for (var i = 0; i < element.option.length; i++) {
+                options += "<option value='" + i + "'>" + element.option[i] + "</option>"
+            }
+            Content.append("<select name='" + element.name + "' id='" + element.id + "'>" + options + "</select>");
+
+        } else if (element.type == "checkbox") {
+            Content.append("<input type='checkbox' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "radio") {
+            Content.append("<input type='radio' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "button") {
+            Content.append("<input type='button' id='" + element.id + "' name='" + element.name + "' value='" + element.value + "'>");
+        } else if (element.type == "file") {
+            Content.append("<input type='file' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "password") {
+            Content.append("<input type='password' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "reset") {
+            Content.append("<input type='reset' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "submit") {
+            Content.append("<input type='submit' id='" + element.id + "' name='" + element.name + "'>");
+        } else if (element.type == "threeArea") {
+            var threeAreaOne = element.id + 1;
+            var threeAreaTwo = element.id + 2;
+            var threeAreaThree = element.id + 3;
+            Content.append("<div class='threeAreaDiv'>" +
+                "<select name='" + element.name + 1 + "' id='" + element.id + 1 + "'><option>请选择</option></select>" +
+                "<select name='" + element.name + 2 + "' id='" + element.id + 2 + "'><option>请选择</option></select>" +
+                "<select name='" + element.name + 3 + "' id='" + element.id + 3 + "'><option>请选择</option></select>" +
+                "</div>");
+            addressInit(threeAreaOne, threeAreaTwo, threeAreaThree);
+        }
+    });
+
+    $(function(){
+        $("input[type=submit]").click(function () {
+            console.log($("#myForm").serialize());
+            return false;
+        })
+    })
+
+</script>
+<script src="js/uniform-common.js"></script>
+<script src="pluge/valid/src/js/jquery.uniform.js"></script>
+<script src="pluge/valid/formValidator-4.1.3.js"></script>
+</body>
+</html>

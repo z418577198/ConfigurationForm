@@ -1,0 +1,64 @@
+[
+  {
+    "name":"two",
+    "type":"select",
+    "option":[
+      "上海",
+      "广州",
+      "深圳",
+      "海南"
+    ],
+    "id":"twoId"
+  },
+  {
+    "name":"threeArea",
+    "type":"threeArea",
+    "id":"threeAreaId"
+  },
+  {
+    "name":"threeArea2",
+    "type":"threeArea",
+    "id":"threeAreaId2"
+  },
+  {
+    "name": "one",
+    "type": "text",
+    "id": "oneId"
+  },
+  {
+    "name":"three",
+    "type":"checkbox",
+    "id":"threeId"
+  },
+  {
+    "name":"four",
+    "type":"radio",
+    "id":"fourId"
+  },
+  {
+    "name":"button",
+    "type":"button",
+    "id":"buttonId",
+    "value":"点击按钮"
+  },
+  {
+    "name":"file",
+    "type":"file",
+    "id":"fileId"
+  },
+  {
+    "name":"password",
+    "type":"password",
+    "id":"passwordId"
+  },
+  {
+    "name":"reset",
+    "type":"reset",
+    "id":"resetId"
+  },
+  {
+    "name":"submit",
+    "type":"submit",
+    "id":"submitId"
+  }
+]

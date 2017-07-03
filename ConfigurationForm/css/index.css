@@ -1,0 +1,52 @@
+
+*{
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+input {
+    display: block;
+    font-size: 14px;
+    color: #222c3c;
+    border: 1px solid #dfe3e9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 7.5px 14px;
+}
+
+select {
+    display: block;
+    font-size: 14px;
+    color: #adafb2;
+    border: 1px solid #dfe3e9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    padding: 6.5px 14px;
+    height: 36px;
+    background-color: #f1f3f7;
+}
+.threeAreaDiv{
+    margin: 20px 0;
+}
+.threeAreaDiv select {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+input[type='button'],input[type='reset'],input[type='submit']{
+
+    background:red; /* 一些不支持背景渐变的浏览器 */
+    background:-moz-linear-gradient(top, #fff, #f2f4f7);
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#f2f4f7));
+    background:-o-linear-gradient(top, #fff, #f2f4f7);
+    filter:alpha(opacity=100,finishopacity=50,style=1,startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#fff,endcolorstr=#f2f4f7,gradientType=0);
+    -ms-filter:alpha(opacity=100,finishopacity=50,style=1,startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#fff,endcolorstr=#f2f4f7,gradientType=0);/*IE8*/
+}
+:root input[type='button']{filter:none;}
+
